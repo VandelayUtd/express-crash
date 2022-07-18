@@ -1,20 +1,13 @@
 const express = require('express')
 const app = express()
 
+app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
+
 app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => {
-    console.log('here')
-    res.render('index', { text: 'World' })
-})
+const userRouter = require('./routes/users')
 
-app.get('/users', (req, res) => {
-    res.send('user list')
-})
-
-app.get('/users/new', (req, res) => {
-    res.send('user new form')
-})
-
+app.use('/users', userRouter)
 
 app.listen(3000)
