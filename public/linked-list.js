@@ -13,14 +13,19 @@ const d = new Node('d')
 //   a -> b -> c -> d -> NULL
 //  cur
 
+// iterative
 const printLinkedList = () => {
     let current = head;
     while (current !== null) {
         console.log(current.val)
         current = current.next
     }
-
 };
 
-// const recursivePrintLinkedList
+const recursivePrintLinkedList = () => {
+    if(head === null) return;
+    console.log(head.val);
+    recursivePrintLinkedList(head.next);
+}
+
 printLinkedList(a)
